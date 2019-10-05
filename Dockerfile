@@ -50,38 +50,16 @@ RUN docker-php-ext-install -j$(nproc) gd
 RUN a2enmod rewrite headers
 
 
-#@v Trying to install VIM to get what it does
-#@bug It did not found the VIM package, though it executed the command so that is nice
-#RUN apt-get -y install vim
+
 
 #@v INstall node.js
 RUN apt-get -y install python 
 
-#@bug Failed NPM INstall nodejs
-#RUN apt-get -y install nodejs 
-#@cr failed by previous implication
-#RUN npm install yarn --g
-#RUN yarn global add gulp grunt
 
-
-#@v Build Node Source and Install
-#@a Download/Extract node source
-#@a Configure/build/test/install node
-#RUN mkdir -p /var/tmp/node  && cd $_ && wget https://nodejs.org/dist/v10.15.1/node-v10.15.1.tar.gz && tar xzf node-v10.15.1.tar.gz && cd node-v10.15.1 && ./configure && make -j8  && make install
-# RUN apt-get update -yq \
-#    && apt-get install curl gnupg -yq \
-#    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
-#    && apt-get install nodejs -yq
- # Using Debian, as root
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
-# RUN apt-get update
-# RUN apt-get -y install nodejs
-RUN npm --version && sleep 10
-RUN echo "********************"
-RUN npm --version && sleep 10
-#RUN apt-get -y install npm
+
 
 RUN npm install yarn --g
 
